@@ -22,10 +22,18 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         mContext = this;
     }
 
+    /**
+     * @return 得到Activity上下文
+     */
     protected Context getContext() {
         return mContext;
     }
 
+    /**
+     * 显示或隐藏view
+     * @param v View
+     * @param isVisible true to VISIBLE or to GONE
+     */
     protected void viewDisplay(@NonNull View v, boolean isVisible) {
         v.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
@@ -35,5 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 初始化参数
+     */
     public abstract void initParams();
 }
