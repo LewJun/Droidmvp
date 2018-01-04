@@ -1,15 +1,27 @@
 package cn.com.sysa.droidmvp.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.com.sysa.droidmvp.R;
+import cn.com.sysa.droidmvp.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initViews();
+        initParams();
+    }
+
+    @Override
+    public void initViews() {
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    public void initParams() {
+
+    }
+
 }

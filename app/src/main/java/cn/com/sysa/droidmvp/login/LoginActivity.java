@@ -1,16 +1,16 @@
 package cn.com.sysa.droidmvp.login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import cn.com.sysa.droidmvp.R;
+import cn.com.sysa.droidmvp.base.BaseActivity;
 import cn.com.sysa.droidmvp.main.MainActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View, View.OnClickListener {
+public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
 
     private ProgressBar progressBar;
     private EditText username;
@@ -21,6 +21,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initViews();
+        initParams();
+    }
+
+    @Override
+    public void initParams() {
+        presenter = new LoginPresenter(this, new LoginInteractorImpl());
+    }
+
+    @Override
+    public void initViews() {
         setContentView(R.layout.activity_login);
 
         progressBar = findViewById(R.id.progress);
@@ -28,7 +39,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         password = findViewById(R.id.password);
         findViewById(R.id.btn_login).setOnClickListener(this);
 
-        presenter = new LoginPresenter(this, new LoginInteractorImpl());
     }
 
     @Override
@@ -44,12 +54,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+        viewDisplay(progressBar, true);
     }
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
+        viewDisplay(progressBar, false);
     }
 
     @Override
@@ -64,14 +74,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void navigateToHome() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.destroy();
         super.onDestroy();
     }
 }
