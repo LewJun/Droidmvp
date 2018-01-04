@@ -10,13 +10,13 @@ import android.widget.ProgressBar;
 import cn.com.sysa.droidmvp.R;
 import cn.com.sysa.droidmvp.main.MainActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements LoginContract.View, View.OnClickListener {
 
     private ProgressBar progressBar;
     private EditText username;
     private EditText password;
 
-    private LoginPresenter presenter;
+    private LoginContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         password = findViewById(R.id.password);
         findViewById(R.id.btn_login).setOnClickListener(this);
 
-        presenter = new LoginPresenterImpl(this, new LoginInteractorImpl());
+        presenter = new LoginPresenter(this, new LoginInteractorImpl());
     }
 
     @Override

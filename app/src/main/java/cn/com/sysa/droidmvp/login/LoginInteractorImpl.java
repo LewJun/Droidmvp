@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 /**
+ * 登录业务实现
  * Created by LewJun on 2018/01/04.
  */
 public class LoginInteractorImpl implements LoginInteractor {
