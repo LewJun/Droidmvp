@@ -12,7 +12,7 @@ import android.widget.Toast;
  * Created by LewJun on 2018/01/04.
  */
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
-    private static final String TAG = "BaseActivity";
+    protected static final String TAG = "BaseActivity";
     private Context mContext;
 
     @Override
@@ -30,17 +30,44 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     /**
-     * 显示或隐藏view
-     * @param v View
-     * @param isVisible true to VISIBLE or to GONE
+     * 显示View
+     * @param view View
      */
-    protected void viewDisplay(@NonNull View v, boolean isVisible) {
-        v.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+    public void showView(View view) {
+        view.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * 隐藏View
+     * @param view View
+     */
+    public void hideView(View view) {
+        view.setVisibility(View.GONE);
+    }
+
+    /**
+     * 显示或隐藏
+     * @param view View
+     * @param isShow 是否显示
+     */
+    public void showOrHideView(View view, boolean isShow) {
+        if(isShow) {
+            showView(view);
+        } else {
+            hideView(view);
+        }
+    }
     @Override
     public void showMsg(String msg) {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgress() {
+    }
+
+    @Override
+    public void hideProgress() {
     }
 
     /**

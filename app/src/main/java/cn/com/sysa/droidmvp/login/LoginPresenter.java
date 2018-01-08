@@ -3,7 +3,7 @@ package cn.com.sysa.droidmvp.login;
 /**
  * Created by LewJun on 2018/01/04.
  */
-public class LoginPresenter implements LoginContract.Presenter {
+class LoginPresenter implements LoginContract.Presenter {
 
     private LoginContract.View view;
     private LoginInteractor loginInteractor;

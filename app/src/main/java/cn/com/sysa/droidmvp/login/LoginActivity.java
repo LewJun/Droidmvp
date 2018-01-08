@@ -1,6 +1,5 @@
 package cn.com.sysa.droidmvp.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -54,12 +53,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void showProgress() {
-        viewDisplay(progressBar, true);
+        showView(progressBar);
     }
 
     @Override
     public void hideProgress() {
-        viewDisplay(progressBar, false);
+        hideView(progressBar);
     }
 
     @Override
@@ -74,8 +73,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void navigateToHome() {
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
+        MainActivity.launch(this);
         finish();
     }
 
