@@ -14,6 +14,8 @@ import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
 
+import org.litepal.LitePal;
+
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
@@ -38,6 +40,16 @@ public class BaseApplication extends Application {
         mContext = getApplicationContext();
 
         initOkGo();
+
+        initLitePal();
+    }
+
+    /**
+     * 初始化LitePale
+     */
+    private void initLitePal() {
+        LitePal.initialize(this);
+        LitePal.getDatabase();
     }
 
 
