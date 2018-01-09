@@ -147,8 +147,8 @@ public class MainPresenter implements MainContract.Presenter {
 
             @Override
             public void onSuccess(ApiResult<ServerModel> body) {
-                Log.d(TAG, "onSuccess: " + body.getData().getUrl());
-                view.setString(body.getData().getUrl());
+                Log.d(TAG, "onSuccess: " + body.data.url);
+                view.setString(body.data.author.github);
             }
 
             @Override
