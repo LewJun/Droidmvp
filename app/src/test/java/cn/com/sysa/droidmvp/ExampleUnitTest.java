@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.lang.reflect.Type;
 
 import cn.com.sysa.droidmvp.net.ApiResult;
-import cn.com.sysa.droidmvp.net.ServerModel;
+import cn.com.sysa.droidmvp.model.ServerModel;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

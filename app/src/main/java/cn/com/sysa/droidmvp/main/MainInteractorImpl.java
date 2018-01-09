@@ -10,7 +10,7 @@ import java.util.Map;
 
 import cn.com.sysa.droidmvp.net.ApiResult;
 import cn.com.sysa.droidmvp.net.HttpEngine;
-import cn.com.sysa.droidmvp.net.ServerModel;
+import cn.com.sysa.droidmvp.model.ServerModel;
 import cn.com.sysa.droidmvp.util.HttpRequestCallBackListener;
 import cn.com.sysa.droidmvp.util.Urls;
 
