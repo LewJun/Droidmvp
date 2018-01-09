@@ -1,5 +1,7 @@
 package cn.com.sysa.droidmvp.main;
 
+import android.graphics.Bitmap;
+
 import cn.com.sysa.droidmvp.base.BasePresenter;
 import cn.com.sysa.droidmvp.base.BaseView;
 
@@ -13,13 +15,21 @@ interface MainContract {
          *
          * @param text 值
          */
-        void setMethodTxt(String text);
+        void setString(String text);
+
+        void setImage(Bitmap body);
+
+        void updateDownloadProgress(int progress);
     }
 
     interface Presenter extends BasePresenter {
         /**
-         * 调用getMethod值
+         * getImage
          */
-        void getMethod();
+        void getImage();
+
+        void downloadFile();
+
+        void getJsonObject();
     }
 }
