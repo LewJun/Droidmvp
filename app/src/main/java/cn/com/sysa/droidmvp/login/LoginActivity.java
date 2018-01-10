@@ -1,19 +1,21 @@
 package cn.com.sysa.droidmvp.login;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.com.sysa.droidmvp.R;
 import cn.com.sysa.droidmvp.base.BaseActivity;
 import cn.com.sysa.droidmvp.main.MainActivity;
 
-public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    private ProgressBar progressBar;
-    private EditText username;
-    private EditText password;
+    @BindView(R.id.progress) ProgressBar progressBar;
+    @BindView(R.id.username) EditText username;
+    @BindView(R.id.password) EditText password;
 
     private LoginContract.Presenter presenter;
 
@@ -32,23 +34,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void initViews() {
         setContentView(R.layout.activity_login);
-
-        progressBar = findViewById(R.id.progress);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        findViewById(R.id.btn_login).setOnClickListener(this);
-
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_login:
-                presenter.validateCredentials(username.getText().toString(), password.getText().toString());
-                break;
-            default:
-                break;
-        }
+    @OnClick(R.id.btn_login)
+    public void login() {
+        presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
 
     @Override

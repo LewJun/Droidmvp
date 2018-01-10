@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by LewJun on 2018/01/04.
  */
@@ -20,6 +22,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Activity Name: " + this.getClass().getSimpleName());
         mContext = this;
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+
+//        使用ButterKnife
+        ButterKnife.bind(this);
     }
 
     /**

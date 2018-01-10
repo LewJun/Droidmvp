@@ -9,18 +9,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.com.sysa.droidmvp.R;
 import cn.com.sysa.droidmvp.base.BaseActivity;
 
-public class MainActivity extends BaseActivity implements MainContract.View, View.OnClickListener {
+public class MainActivity extends BaseActivity implements MainContract.View {
 
     MainContract.Presenter presenter;
 
-    private TextView tv_string;
-    private ImageView iv_image;
-    private ProgressBar progressbar;
+    @BindView(R.id.tv_string) TextView tv_string;
+    @BindView(R.id.iv_image) ImageView iv_image;
+    @BindView(R.id.progress) ProgressBar progressbar;
 //    下载进度
-    private ProgressBar pbProgress;
+    @BindView(R.id.pbProgress) ProgressBar pbProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +34,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Vie
     @Override
     public void initViews() {
         setContentView(R.layout.activity_main);
-        tv_string = findViewById(R.id.tv_string);
-        iv_image = findViewById(R.id.iv_image);
-
-        findViewById(R.id.btn_getString).setOnClickListener(this);
-        findViewById(R.id.btn_getImage).setOnClickListener(this);
-        findViewById(R.id.btn_downloadFile).setOnClickListener(this);
-        findViewById(R.id.btn_getJsonObject).setOnClickListener(this);
-
-        progressbar = findViewById(R.id.progress);
-        pbProgress = findViewById(R.id.pbProgress);
     }
 
     @Override
@@ -74,28 +66,19 @@ public class MainActivity extends BaseActivity implements MainContract.View, Vie
         pbProgress.setProgress(progress);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_getString:
-                presenter.getJsonObject();
-                break;
+    @OnClick(R.id.btn_getString)
+    public void getJsonObject() {
+        presenter.getJsonObject();
+    }
 
-            case R.id.btn_getImage:
-                presenter.getImage();
-                break;
+    @OnClick(R.id.btn_getImage)
+    public void getImage() {
+        presenter.getImage();
+    }
 
-            case R.id.btn_downloadFile:
-                presenter.downloadFile();
-                break;
-
-            case R.id.btn_getJsonObject:
-                presenter.getJsonObject();
-                break;
-
-            default:
-                break;
-        }
+    @OnClick(R.id.btn_downloadFile)
+    public void downloadFile() {
+        presenter.downloadFile();
     }
 
     @Override

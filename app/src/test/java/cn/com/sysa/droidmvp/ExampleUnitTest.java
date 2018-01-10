@@ -23,9 +23,9 @@ public class ExampleUnitTest {
         Type type = new TypeToken<ApiResult<ServerModel>>() {
         }.getType();
         ApiResult<ServerModel> apiResult = gson.fromJson(jsonTxt, type);
-        ServerModel data = apiResult.getData();
+        ServerModel data = apiResult.data;
         System.out.println(data);
-        System.out.println(data.getAuthor());
+        System.out.println(data.author);
     }
 
 }
