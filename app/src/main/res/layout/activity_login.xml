@@ -1,11 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="@dimen/m16"
     android:gravity="center"
     android:orientation="vertical">
-
+    <!--不显示标题栏-->
+    <!--<include layout="@layout/layout_toolbar"/>-->
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"

@@ -1,14 +1,19 @@
 package cn.com.sysa.droidmvp.base;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
+import cn.com.sysa.droidmvp.R;
 
 /**
  * Created by LewJun on 2018/01/04.
@@ -26,7 +31,25 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     @Override
     public void setContentView(int layoutResID) {
+        //无title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //全屏
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+                WindowManager.LayoutParams. FLAG_FULLSCREEN);
+
         super.setContentView(layoutResID);
+
+//        不显示默认标题栏
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+
+//        显示自定义标题栏
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
 
 //        使用ButterKnife
         ButterKnife.bind(this);
